@@ -33,6 +33,10 @@ const Container = styled.button`
                 'var(--color-button-primary-dark)'
         };
     }
+
+    &:focus {
+        outline: none;
+    }
 `;
 
 export default Container;
