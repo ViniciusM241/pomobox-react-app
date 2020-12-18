@@ -37,6 +37,10 @@ const Container = styled.button`
     &:focus {
         outline: none;
     }
+
+    @media (max-width: 768px) {
+        width: 20rem;
+      }
 `;
 
 export default Container;

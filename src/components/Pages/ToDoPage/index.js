@@ -3,8 +3,11 @@ import React, { useState } from 'react';
 import Header from '../../Header';
 import Input from '../../Input';
 import Button from '../../Button';
+import Modal from '../../Modal';
 
 import buttonGo from '../../../assets/buttonGo.svg';
+
+import { Title } from './style.js';
 
 export default function ToDoPage() {
 
@@ -35,10 +38,12 @@ export default function ToDoPage() {
     return (
         <>
             <Header btnIco={buttonGo} icoAlt="ButtonIco" btnName="Start">
-                <Input onChange={handleInputChange.bind(this)} type="text" name="Name" value={toDoItem.Name} />
-                <Input onChange={handleInputChange.bind(this)} textarea name="Description" value={toDoItem.Description} />
-                <Button to="" ico={buttonGo} alt="ButtonIco" secondary> Add </Button>
+                <Input onChange={handleInputChange.bind(this)} type="text" name="Name" value={toDoItem.Name}>Name: </Input>
+                <Input onChange={handleInputChange.bind(this)} textarea name="Description" value={toDoItem.Description}>Description: </Input>
+                <Button to="/ToDoPage" ico={buttonGo} alt="ButtonIco" secondary> Add </Button>
             </Header>
+            <Title>TODO LIST:</Title>
+            <Modal name={toDoObject.Name} />
         </>
     );
 }

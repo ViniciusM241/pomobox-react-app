@@ -14,7 +14,7 @@ export const StyledInput = styled.input`
     }
 
     color: var(--color-text-white);
-    font: 500 3rem 'Roboto';
+    font: 500 2rem 'Roboto';
 
     &.textarea {
         height: 15rem;
@@ -23,4 +23,10 @@ export const StyledInput = styled.input`
     &:focus {
         outline: none;
     }
+`;
+
+export const Label = styled.label`
+    width: 50rem;
+    font-size: 3rem;
+    color: var(--color-text-white);
 `;

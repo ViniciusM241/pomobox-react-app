@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { StyledInput } from './style';
+import { StyledInput, Label } from './style';
 
 export default function Input(props) {
 
@@ -10,7 +10,7 @@ export default function Input(props) {
 
     return (
         <>
-            {/* <label for={props.name}> {props.name} </label> */}
+            <Label >{props.children}</Label>
             {props.textarea ?
                 <StyledInput onChange={onParentChange.bind(this)} as="textarea" className="textarea" name={props.name} placeholder={props.name} value={props.value} />
             :   
