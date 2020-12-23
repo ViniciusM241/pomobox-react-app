@@ -8,7 +8,7 @@ export default function Modal(props) {
         <>
             <Container>
                 <Close>X</Close>
-                {props.name}
+                {props.toDoName}
             </Container> 
         </>
     );

@@ -9,11 +9,21 @@ import Container from './style';
 export default function Button(props) {
     
     return (
-        <Link to={props.to}>
+        <>
+        {props.to ?
+
+            <Link to={props.to}>
+                <Container secondary={props.secondary}>
+                    <img src={props.ico} alt={props.alt} />
+                    {props.children}
+                </Container>
+            </Link>
+        :
             <Container secondary={props.secondary}>
                 <img src={props.ico} alt={props.alt} />
                 {props.children}
             </Container>
-        </Link>
+        }
+        </>
     );
 }

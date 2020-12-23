@@ -7,7 +7,7 @@ import Modal from '../../Modal';
 
 import buttonGo from '../../../assets/buttonGo.svg';
 
-import { Title } from './style.js';
+import { Title, Body } from './style.js';
 
 export default function ToDoPage() {
 
@@ -30,20 +30,32 @@ export default function ToDoPage() {
         const name = e.target.name;
         const value = e.target.value;
         setToDoItem({
+            ...toDoItem,
             [name]: value
         })
-        console.log(toDoItem)
+
+        console.log(toDoItem);
     };
+
+    const setItems = () => {
+        alert('Hello')
+        setIdCount({idCount: idCount + 1});
+        const json = JSON.stringify(toDoItem);
+
+        console.log(json);
+    }
 
     return (
         <>
             <Header btnIco={buttonGo} icoAlt="ButtonIco" btnName="Start">
                 <Input onChange={handleInputChange.bind(this)} type="text" name="Name" value={toDoItem.Name}>Name: </Input>
                 <Input onChange={handleInputChange.bind(this)} textarea name="Description" value={toDoItem.Description}>Description: </Input>
-                <Button to="/ToDoPage" ico={buttonGo} alt="ButtonIco" secondary> Add </Button>
+                <Button as="button" onClick={() => setItems()} ico={buttonGo} alt="ButtonIco" secondary> Add </Button>
             </Header>
-            <Title>TODO LIST:</Title>
-            <Modal name={toDoObject.Name} />
+            <Body>
+                <Title>TODO LIST:</Title>
+                <Modal toDoName={toDoObject.Name} />
+            </Body>
         </>
     );
 }
