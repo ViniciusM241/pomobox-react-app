@@ -19,7 +19,7 @@ export default function Button(props) {
                 </Container>
             </Link>
         :
-            <Container secondary={props.secondary}>
+            <Container onClick={props.onClick} secondary={props.secondary}>
                 <img src={props.ico} alt={props.alt} />
                 {props.children}
             </Container>

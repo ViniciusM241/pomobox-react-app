@@ -1,14 +1,14 @@
 import React from 'react';
 
-import { Container, Close } from './style.js';
+import { Container, Close, Title } from './style.js';
 
 export default function Modal(props) {
 
     return (
         <>
             <Container>
-                <Close>X</Close>
-                {props.toDoName}
+                <Close onClick={props.onClick}>X</Close>
+                <Title>{props.toDoName}</Title>
             </Container> 
         </>
     );

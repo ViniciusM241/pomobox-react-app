@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 import Header from '../../Header';
 import Input from '../../Input';
@@ -11,38 +11,48 @@ import { Title, Body } from './style.js';
 
 export default function ToDoPage() {
 
-    const lastId = () => {
-        return 0;
-    };
+    const [toDoList, setToDoList] = useState([]);
+    const [idCount, setIdCount] = useState(0);
 
-    const [idCount, setIdCount] = useState(lastId());
+    useEffect(() => {
+        if(localStorage.hasOwnProperty("toDoArray"))
+             setToDoList(JSON.parse(localStorage.getItem("toDoArray")));
+    }, [])
 
     const toDoObject = {
-        Id: idCount,
+        Id: 0,
         Name: '',
         Description: ''
     };
 
-    const [toDoItem, setToDoItem] = useState(toDoObject);
-    // const [toDoList, setToDoList] = useState([]);
+    const [toDoItem, setToDoItem] = useState(toDoObject)
     
     const handleInputChange = (e) => {
-        const name = e.target.name;
-        const value = e.target.value;
+        const { name, value } = e.target;
         setToDoItem({
             ...toDoItem,
             [name]: value
         })
+    }
 
-        console.log(toDoItem);
-    };
+    useEffect(() => {
+        localStorage.setItem('toDoArray', JSON.stringify(toDoList));
+    }, [toDoList]);
 
     const setItems = () => {
-        alert('Hello')
-        setIdCount({idCount: idCount + 1});
-        const json = JSON.stringify(toDoItem);
+        if(toDoItem.Name !== "" && toDoItem.Description !== ""){
+            toDoItem.Id = idCount;
+            setToDoList([...toDoList, toDoItem]);
+            setToDoItem(toDoObject);
+            alert('Salvo com sucesso');
+            setIdCount(idCount + 1);
+        }else
+            alert('Você precisa preencher todos os campos antes de adicionar.');
+    }
 
-        console.log(json);
+    const deleteItem = id => {
+        const index = toDoList.filter(x => x.Id !== id);
+        setToDoList(index);
     }
 
     return (
@@ -50,11 +60,13 @@ export default function ToDoPage() {
             <Header btnIco={buttonGo} icoAlt="ButtonIco" btnName="Start">
                 <Input onChange={handleInputChange.bind(this)} type="text" name="Name" value={toDoItem.Name}>Name: </Input>
                 <Input onChange={handleInputChange.bind(this)} textarea name="Description" value={toDoItem.Description}>Description: </Input>
-                <Button as="button" onClick={() => setItems()} ico={buttonGo} alt="ButtonIco" secondary> Add </Button>
+                <Button onClick={() => setItems()} ico={buttonGo} alt="ButtonIco" secondary> Add </Button>
             </Header>
             <Body>
                 <Title>TODO LIST:</Title>
-                <Modal toDoName={toDoObject.Name} />
+                {toDoList && toDoList.map(elem => 
+                    <Modal onClick={() => deleteItem(elem.Id)} key={elem.Id} toDoName={elem.Name} />
+                )}
             </Body>
         </>
     );
