@@ -42,7 +42,10 @@ export const Image = styled.img`
 
     width: 115px;
     height: 115px;
-    overflow: scroll;
+
+    &:hover {
+        cursor: pointer;
+    }
 
     @media (max-width: 768px) {
         display: none;
