@@ -7,7 +7,7 @@ export const Container = styled.div`
     
 `;
 export const Head = styled.div`
-    padding: 0 1rem;
+    padding: 10px 1rem;
 
     display: flex;
     flex-direction: row;
@@ -16,10 +16,9 @@ export const Head = styled.div`
 
     > a > img {
         width: 100%;
-    }
-
-    > Button {
-
+        @media (max-width: 768px) {
+            width: 85%;
+        }
     }
 `;
 export const Main = styled.div`
@@ -35,3 +34,17 @@ export const Main = styled.div`
         width: 50rem;
     }
 `;
+
+export const Image = styled.img`
+    position: fixed;
+    right: 5px;
+    bottom: 5px;
+
+    width: 115px;
+    height: 115px;
+    overflow: scroll;
+
+    @media (max-width: 768px) {
+        display: none;
+      }
+`

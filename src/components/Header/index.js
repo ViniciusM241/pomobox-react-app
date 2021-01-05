@@ -2,9 +2,10 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 import Button from '../Button';
-import { Container, Head, Main } from './style';
+import { Container, Head, Main, Image } from './style';
 
 import logo from '../../assets/logo.svg';
+import tomato from '../../assets/tomato.svg';
 
 export default function Header(props){
     return (
@@ -15,6 +16,7 @@ export default function Header(props){
             </Head>
             <Main>
                 {props.children}
+                <Image src={tomato} />
             </Main>
         </Container>
     );   

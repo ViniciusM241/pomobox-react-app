@@ -44,10 +44,10 @@ export default function ToDoPage() {
             toDoItem.Id = idCount;
             setToDoList([...toDoList, toDoItem]);
             setToDoItem(toDoObject);
-            alert('Salvo com sucesso');
+            alert('Added with success!');
             setIdCount(idCount + 1);
         }else
-            alert('Você precisa preencher todos os campos antes de adicionar.');
+            alert('You need to fill all the fields before add.');
     }
 
     const deleteItem = id => {
