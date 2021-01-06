@@ -30,8 +30,15 @@ export const Main = styled.div`
     
     margin-bottom: 1.5rem;
 
-    > a > button {
-        width: 50rem;
+    button {
+        margin-left: 0;   
+    }
+
+    @media (max-width: 768px) {
+        > button {
+            width: 50rem;
+            margin: 5% auto;
+        }
     }
 `;
 

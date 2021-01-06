@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
 
-import { Container, Close, Title } from './style.js';
+import Button from '../Button';
+import buttonGo from '../../assets/buttonGo.svg';
+
+import { Container, Close, Title, BigModal, Description, Background } from './style.js';
 
 export default function Modal(props) {
 
@@ -8,22 +11,21 @@ export default function Modal(props) {
 
     return (
         <>
-            {modalState ?
-            <> 
-                <Container onClick={() => setModalState(true)}>
-                    <Close onClick={props.onClick}>X</Close>
+            {modalState &&
+            <>
+                <Background onClick={() => setModalState(false)}></Background>
+                <BigModal>
+                    <Close onClick={() => setModalState(false)}>X</Close>
                     <Title>{props.toDoName}</Title>
-                </Container>
-                <Title>Hello World</Title>
+                    <Description>{props.toDoDescription}</Description>
+                    <Button ico={buttonGo}>Edit This</Button>
+                </BigModal>
             </>
-            //No lugar de TITLE deve ir o modal grande na tela
-            //Quando esse modal fechar, o estado muda e ele desaparece.
-            :
-                <Container onClick={() => setModalState(true)}>
-                    <Close onClick={props.onClick}>X</Close>
-                    <Title>{props.toDoName}</Title>
-                </Container>
             }
+            <Container onClick={() => setModalState(true)}>
+                <Close onClick={props.onClick}>X</Close>
+                <Title>{props.toDoName}</Title>
+            </Container>
         </>
     );
 }

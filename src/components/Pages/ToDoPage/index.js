@@ -65,7 +65,7 @@ export default function ToDoPage() {
             <Body>
                 <Title>TODO LIST:</Title>
                 {toDoList && toDoList.map(elem => 
-                    <Modal onClick={() => deleteItem(elem.Id)} key={elem.Id} toDoName={elem.Name} />
+                    <Modal onClick={() => deleteItem(elem.Id)} key={elem.Id} toDoName={elem.Name} toDoDescription={elem.Description} />
                 )}
             </Body>
         </>
