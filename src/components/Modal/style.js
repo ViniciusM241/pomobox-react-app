@@ -21,6 +21,8 @@ export const Container = styled.div`
         margin: 0 auto;
         margin-bottom: 20px;
         width: 100%;
+        padding: 4rem 2rem;
+        font-size: 4rem;
     }
 
 `;
@@ -64,7 +66,7 @@ export const BigModal = styled.div`
     height: 70vh;
     padding: 44px 64px;
     float: left;
-    overflow: scroll;
+    overflow-y: scroll;
 
     background-color: #FFF;
     box-shadow: 0 19px 13px rgba(0, 0, 0, 0.25);
@@ -80,10 +82,15 @@ export const BigModal = styled.div`
     justify-items: center;
     align-content: center;
 
+    ::-webkit-scrollbar {
+        display: none;
+    }
+
     > h1 {
         justify-content: right;
         font-size: 5rem;
         float: right;
+        width: 1%;
     }
 
     > h2 {

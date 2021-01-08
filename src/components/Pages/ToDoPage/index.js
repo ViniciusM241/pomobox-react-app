@@ -41,11 +41,25 @@ export default function ToDoPage() {
 
     const setItems = () => {
         if(toDoItem.Name !== "" && toDoItem.Description !== ""){
-            toDoItem.Id = idCount;
-            setToDoList([...toDoList, toDoItem]);
-            setToDoItem(toDoObject);
-            alert('Added with success!');
-            setIdCount(idCount + 1);
+            if(toDoItem.Id){
+                let array = toDoList;
+                array.forEach(x => {
+                    if(x.Id === toDoItem.Id){
+                        x.Name = toDoItem.Name;
+                        x.Description = toDoItem.Description;
+                    }
+                });
+                setToDoList(array);
+                setToDoItem(toDoObject);
+                localStorage.setItem('toDoArray', JSON.stringify(toDoList));
+                alert('ToDo edited with success!');
+            } else {
+                setIdCount(idCount + 1);
+                toDoItem.Id = idCount;
+                setToDoList([...toDoList, toDoItem]);
+                setToDoItem(toDoObject);
+                alert('Added with success!');   
+            }
         }else
             alert('You need to fill all the fields before add.');
     }
@@ -65,7 +79,7 @@ export default function ToDoPage() {
             <Body>
                 <Title>TODO LIST:</Title>
                 {toDoList && toDoList.map(elem => 
-                    <Modal onClick={() => deleteItem(elem.Id)} key={elem.Id} toDoName={elem.Name} toDoDescription={elem.Description} />
+                    <Modal onClick={() => deleteItem(elem.Id)} key={elem.Id} toDoObject={elem} setInput={setToDoItem} />
                 )}
             </Body>
         </>
