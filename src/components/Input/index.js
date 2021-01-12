@@ -10,7 +10,7 @@ export default function Input(props) {
 
     return (
         <>
-            <Label >{props.children}</Label>
+            <Label for={props.name}>{props.children}</Label>
             {props.textarea ?
                 <StyledInput onChange={onParentChange.bind(this)} as="textarea" className="textarea" name={props.name} placeholder={props.name} value={props.value} />
             :   

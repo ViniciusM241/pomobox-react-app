@@ -71,7 +71,7 @@ export default function ToDoPage() {
 
     return (
         <>
-            <Header btnIco={buttonGo} icoAlt="ButtonIco" btnName="Start">
+            <Header btnIco={buttonGo} icoAlt="ButtonIco" btnName="Start" btnTo="/MainPage" >
                 <Input onChange={handleInputChange.bind(this)} type="text" name="Name" value={toDoItem.Name}>Name: </Input>
                 <Input onChange={handleInputChange.bind(this)} textarea name="Description" value={toDoItem.Description}>Description: </Input>
                 <Button onClick={() => setItems()} ico={buttonGo} alt="ButtonIco" secondary> Add </Button>
