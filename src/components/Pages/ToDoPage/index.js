@@ -12,7 +12,7 @@ import { Title, Body } from './style.js';
 export default function ToDoPage() {
 
     const [toDoList, setToDoList] = useState([]);
-    const [idCount, setIdCount] = useState(0);
+    const [idCount, setIdCount] = useState(1);
 
     useEffect(() => {
         if(localStorage.hasOwnProperty("toDoArray"))
@@ -77,7 +77,7 @@ export default function ToDoPage() {
                 <Button onClick={() => setItems()} ico={buttonGo} alt="ButtonIco" secondary> Add </Button>
             </Header>
             <Body>
-                <Title>TODO LIST:</Title>
+                <Title>TODO's:</Title>
                 {toDoList && toDoList.map(elem => 
                     <Modal onClick={() => deleteItem(elem.Id)} key={elem.Id} toDoObject={elem} setInput={setToDoItem} />
                 )}
