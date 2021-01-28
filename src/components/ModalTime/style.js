@@ -5,13 +5,23 @@ export const Container = styled.div`
     width: 30%;
     min-height: 400px;
     margin: 0 auto;
-    margin-top: -50px;
+    margin-top: 50px;
     border-radius: 3px;
 
     background-color: #fff;
     box-shadow: 0 7px 10px rgba(0,0,0,0.25);
 
     position: relative;
+
+    &:first-child {
+        margin-top: -50px;
+    }
+
+    @media (max-width: 768px) {
+        width: 90%;
+        min-height: 300px;
+        margin-top: -100px;
+    }
 `;
 
 export const Head = styled.div`
@@ -56,7 +66,7 @@ export const Description = styled.h3`
 
 export const Foot = styled.div`
     position: absolute;
-    bottom: 0;
+    bottom: 5px;
     left: 30%;
 `;
 
